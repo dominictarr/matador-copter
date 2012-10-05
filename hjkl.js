@@ -7,23 +7,42 @@ var redMode = false;
 var speed = 1;
 
 var detect = require('./lib/detect');
+
 var png = client.createPngStream({ log : process.stderr });
 png.on('error', function (err) {
     console.error('caught error ' + err);
 });
 
 var last = 0;
+var detected = false;
+
 png.on('data', function (buf) {
     if (!redMode) return;
-    if (Date.now() - last < 500) return;
+    if (Date.now() - last < 1000) return;
     last = Date.now();
     
+    if (detected) return;
+    
     if (detect(640, 360, buf)) {
+        detected = true;
+        
         console.log(Date.now());
         client.front(1);
+        
         setTimeout(function () {
             client.stop();
+            client.front(0);
+            
+            client.clockwise(1);
         }, 1000);
+        
+        setTimeout(function () {
+            client.clockwise(0);
+        }, 4000);
+        
+        setTimeout(function () {
+            detected = false;
+        }, 5000);
     }
 });
 
