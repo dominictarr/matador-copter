@@ -1,0 +1,11 @@
+{
+  "name" : "matador-copter",
+  "version" : "0.0.0",
+  "dependencies" : {
+    "shoe" : "*",
+    "JSONStream" : "*",
+    "emit-stream" : "*",
+    "ecstatic" : "*",
+    "ar-drone" : "*"
+  }
+}
