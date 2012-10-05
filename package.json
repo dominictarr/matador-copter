@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "keypress": "~0.1.0",
-    "ar-drone": "git://github.com/felixge/node-ar-drone.git"
+    "ar-drone": "git://github.com/felixge/node-ar-drone.git",
     "shoe" : "*",
     "JSONStream" : "*",
     "emit-stream" : "*",
