@@ -71,9 +71,9 @@ var cmd = {
 keys.on('keypress', function (_, k) {
 
   var m = modifiers(k)
-  console.log(m, k, _)
+//  console.log(m, k, _)
   if(cmd[m])
     cmd[m]()
 })
 
-client.on('navdata', console.log)
+//client.on('navdata', console.log)

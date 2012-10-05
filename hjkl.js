@@ -20,7 +20,7 @@ var sock = shoe(function (stream) {
 sock.install(server, '/sock');
 
 var flying = false;
-var redMode = false;
+var redMode = true;
 var speed = 1;
 
 var detect = require('./lib/detect');
@@ -44,6 +44,7 @@ png.on('data', function (buf) {
     
     if (detect(640, 360, buf)) {
         detected = true;
+        emitter.emit('red');
         
         console.log(Date.now());
         client.front(1);
@@ -61,6 +62,7 @@ png.on('data', function (buf) {
         
         setTimeout(function () {
             detected = false;
+            emitter.emit('unred');
         }, 5000);
     }
 });

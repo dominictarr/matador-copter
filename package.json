@@ -9,6 +9,10 @@
   "dependencies": {
     "keypress": "~0.1.0",
     "ar-drone": "git://github.com/felixge/node-ar-drone.git"
+    "shoe" : "*",
+    "JSONStream" : "*",
+    "emit-stream" : "*",
+    "ecstatic" : "*"
   },
   "bundleDependencies": [
     "keypress"
