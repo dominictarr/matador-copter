@@ -3,18 +3,24 @@ var client = drone.createClient();
 client.disableEmergency();
 
 var flying = false;
+var speed = 1;
 
 process.stdin.on('data', function (buf) {
     if (buf[0] === 3) {
         client.land();
-        process.exit();
+        setTimeout(function () {
+            process.exit();
+        }, 250);
     }
     
     var s = String.fromCharCode(buf[0]);
-    if (s === 'h') client.counterClockwise(0.2);
-    if (s === 'j') client.down(0.2);
-    if (s === 'k') client.up(0.2);
-    if (s === 'l') client.clockwise(0.2);
+    if (s === 'h') client.counterClockwise(speed);
+    if (s === 'j') client.down(speed);
+    if (s === 'k') client.up(speed);
+    if (s === 'l') client.clockwise(speed);
+    
+    if (s === 'w') client.front(speed);
+    if (s === 's') client.back(speed);
     
     if (s === ' ') {
         if (flying) client.land();
