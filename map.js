@@ -3,6 +3,8 @@ var keys = require('./keys')
 
 var client = require('ar-drone').createClient()
 
+client.config('general:navdata_demo', 'FALSE');
+
 function modifiers (key) {
 var mods =''
 
