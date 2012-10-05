@@ -1,0 +1,24 @@
+{
+  "name": "matador-copter",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "keys.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "keypress": "~0.1.0",
+    "ar-drone": "0.0.2"
+  },
+  "bundleDependencies": ["keypress"],
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/substack/matador-copter.git"
+  },
+  "author": "",
+  "license": "BSD"
+}
