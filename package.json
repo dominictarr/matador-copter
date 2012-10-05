@@ -14,7 +14,7 @@
     "emit-stream" : "*",
     "ecstatic" : "*"
   },
-  "bundleDependencies": ["keypress"],
+  "bundleDependencies": ["keypress","canvas"],
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

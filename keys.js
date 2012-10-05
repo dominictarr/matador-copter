@@ -1,4 +1,3 @@
-
 var keypress = require('keypress')
 keypress(process.stdin)
 
