@@ -3,7 +3,29 @@ var client = drone.createClient();
 client.disableEmergency();
 
 var flying = false;
+var redMode = false;
 var speed = 1;
+
+var detect = require('./lib/detect');
+var png = client.createPngStream({ log : process.stderr });
+png.on('error', function (err) {
+    console.error('caught error ' + err);
+});
+
+var last = 0;
+png.on('data', function (buf) {
+    if (!redMode) return;
+    if (Date.now() - last < 500) return;
+    last = Date.now();
+    
+    if (detect(640, 360, buf)) {
+        console.log(Date.now());
+        client.front(1);
+        setTimeout(function () {
+            client.stop();
+        }, 1000);
+    }
+});
 
 process.stdin.on('data', function (buf) {
     if (buf[0] === 3) {
@@ -28,6 +50,9 @@ process.stdin.on('data', function (buf) {
         flying = !flying;
     }
     if (s === 'x') client.stop();
+    if (s === 'r') {
+        redMode = true;
+    }
 });
 
 process.stdin.setRawMode(true);
